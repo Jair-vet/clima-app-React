@@ -1,12 +1,8 @@
 import React, {useState} from 'react';
 
-const Formulario = () => {
+const Formulario = ({ busqueda, guardarBusqueda, guardarConsultar }) => {
 
-    // state del Formulario
-    const [busqueda, guardarbusqueda] = useState({
-        ciudad: '',
-        pais: ''        
-    });
+    
     const [error, guardarError] = useState(false);
 
     // Extraer ciudad y pais
@@ -15,7 +11,7 @@ const Formulario = () => {
     // funcio que coloca los elementos en el state
     const handleChange = e => {
         // actualizar el state
-        guardarbusqueda({
+        guardarBusqueda({
             ...busqueda,
             [e.target.name] : e.target.value
         })
@@ -33,6 +29,7 @@ const Formulario = () => {
         guardarError(false);
 
         // pasarlo al componente principal
+        guardarConsultar(true);
     }
 
     return ( 
